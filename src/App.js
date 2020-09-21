@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Editor from "./components/Editor";
+import Previewer from "./components/Previewer";
+import marked from "marked";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = { text: "" };
+
+  handleChange = (e) => {
+    this.setState({ text: e.target.value });
+    this.createMarkup();
+  };
+  createMarkup = () => {
+    marked.setOptions({
+      breaks: true,
+    });
+    return {
+      __html: marked(this.state.text),
+    };
+  };
+  render() {
+    return (
+      <div className="container">
+        <Editor onChange={this.handleChange}></Editor>
+        <Previewer
+          type="previewer"
+          createMarkup={this.createMarkup}
+        ></Previewer>
+      </div>
+    );
+  }
 }
 
 export default App;
