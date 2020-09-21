@@ -8,7 +8,7 @@ class Editor extends Component {
         <textarea
           id="editor"
           onChange={this.props.onChange}
-          placeholder="Please enter the markdown"
+          placeholder="Please enter your markdown. Not sure about this? Check https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
         ></textarea>
       </section>
     );
