@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Previewer extends Component {
   render() {
     return (
-      <section className="container previewer">
+      <section className="previewer">
         <h1>Previewer</h1>
         <div
           id="previewer"
